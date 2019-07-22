@@ -51,3 +51,14 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'pry-rails'
+gem 'haml-rails'
+gem 'erb2haml'
+gem 'haml'
+gem 'line-bot-api'
+gem 'dotenv-rails'
+gem 'whenever', require: false
+gem 'tod'
+gem 'chart-js-rails', '~> 0.1.4'
+gem 'gon', '~> 6.2.0'
+gem 'devise'

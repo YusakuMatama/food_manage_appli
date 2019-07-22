@@ -1,0 +1,2 @@
+class Metabolism < ApplicationRecord
+end
