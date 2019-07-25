@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190722053506) do
+ActiveRecord::Schema.define(version: 20190725075352) do
 
   create_table "food_eatings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "food_id"
@@ -24,18 +24,31 @@ ActiveRecord::Schema.define(version: 20190722053506) do
   create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "calorie"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "hiragana_name"
+    t.integer  "menu_id"
+    t.integer  "menu_category_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["menu_category_id"], name: "index_foods_on_menu_category_id", using: :btree
+    t.index ["menu_id"], name: "index_foods_on_menu_id", using: :btree
+  end
+
+  create_table "menu_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+  end
+
+  create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
   end
 
   create_table "metabolisms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "age_base"
+    t.integer  "age_base"
     t.string   "gender"
-    t.string   "base_metabolic_standard"
-    t.string   "base_weight"
-    t.string   "base_metabolic_rate"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.float    "base_metabolic_standard", limit: 24
+    t.float    "base_weight",             limit: 24
+    t.integer  "base_metabolic_rate"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   create_table "user_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -68,6 +81,8 @@ ActiveRecord::Schema.define(version: 20190722053506) do
 
   add_foreign_key "food_eatings", "foods"
   add_foreign_key "food_eatings", "users"
+  add_foreign_key "foods", "menu_categories"
+  add_foreign_key "foods", "menus"
   add_foreign_key "user_statuses", "metabolisms"
   add_foreign_key "user_statuses", "users"
 end
