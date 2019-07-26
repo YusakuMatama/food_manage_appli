@@ -93,7 +93,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :menu
-- belongs_to :category_menu
+- belongs_to :menu_category
 - has_many :food_eatings
 
 ## food_eatings table

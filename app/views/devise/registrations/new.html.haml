@@ -1,0 +1,21 @@
+%h2 新規登録画面
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label "メールアドレス"
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "メールアドレス"
+  .field
+    = f.label "パスワード"
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} 文字以上入力してください)
+    %br/
+    = f.password_field :password, autocomplete: "パスワード登録"
+  .field
+    = f.label "パスワード確認"
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "パスワード確認"
+  .actions
+    = f.submit "登録"
+= render "devise/shared/links"

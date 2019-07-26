@@ -1,0 +1,34 @@
+.main_container
+  %h1.profile_top
+    プロフィールを登録してください。
+  .container
+    = form_for(@user_status, url: users_path, method: "post", html:{class: "form-horizontal", id:"form-margin"}) do |f|
+      .row
+        .col-sm-2 お名前(全角)
+        .col-sm-10.form-inline{style: "padding: 3px;"}
+          = f.text_field :name, class: "form-control input-sm", id: "name", placeholder: '名前を入力'
+          -# %input#name.form-control.input-sm{:placeholder => "お名前", :size => "20", :type => "text"}/
+      .row
+        .col-sm-2 年齢（才）
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :age, class: "form-control input-sm", id: "name", placeholder: '年齢を入力'
+      .row
+        .col-sm-2 性別
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :gender, class: "form-control input-sm", id: "name", placeholder: '性別を入力'
+      .row
+        .col-sm-2 体重(kg)
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :weight, class: "form-control input-sm", id: "name", placeholder: '体重を入力'
+      .row
+        .col-sm-2 活動レベル※1
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :active_level, class: "form-control input-sm", id: "name", placeholder: '活動レベルを入力'
+      .row
+        .col-sm-2 line_id※2
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :line_id, class: "form-control input-sm", id: "name", placeholder: 'line_idを入力'
+      .text-left{:style => "padding: 30px;"}
+        %button.btn.btn-success{:type => "button"}
+          送信内容の確認
+          %span.glyphicon.glyphicon-chevron-right

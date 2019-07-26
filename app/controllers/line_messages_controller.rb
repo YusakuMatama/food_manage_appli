@@ -5,7 +5,7 @@ class LineMessagesController < ApplicationController
   def callback
     body = request.body.read
     @food_menu = Food.all
-    @user_eat_data = Message.all
+    @user_eat_data = FoodEating.where(user_id: current_user.id)
     @total_calorie = 0
     @total_eat_data_today = ""
     @total_eat_data_yesterday = ""
@@ -20,13 +20,13 @@ class LineMessagesController < ApplicationController
       food_search()
 
       if (@reply_food_data != nil)
-        Message.create(name: @reply_food_data[:name], calorie: @reply_food_data[:calorie])
+        FoodEating.create(name: @reply_food_data[:name], calorie: @reply_food_data[:calorie])
         calc_total_calorie()
 
         response = @reply_food_data[:calorie] + "kcalです。" + "本日は#{@total_calorie}kcal摂取しています。"
         elsif (@user_message == "みす")
           response = "最新の入力内容を削除しました。。" 
-          message = Message.last().destroy
+          message = FoodEating.where(user_id: current_user.id).last().destroy
         elsif (@user_message == "きょう")
           eat_date_data()
           response = @total_eat_data_today

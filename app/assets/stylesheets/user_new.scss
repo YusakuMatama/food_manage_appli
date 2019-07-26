@@ -1,0 +1,21 @@
+.main_container{
+  width: 100vw;
+  height: 100vh;
+  background-image: url("back_image_night.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  object-fit: contain;
+}
+.col-sm-2{
+  color: greenyellow;
+}
+.profile_top{
+  padding-top: 50px;
+  margin-left: 100px;
+  box-sizing: border-box;
+  color: greenyellow;
+}
+#form-margin{
+  margin-top: 30px;
+
+}
