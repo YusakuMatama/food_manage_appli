@@ -20,19 +20,19 @@ class LineMessagesController < ApplicationController
 
       if (@current_user != nil)
         @user_message = params["events"][0]["message"]["text"]
-        @user_eat_data = FoodEating.where(user_id: @current_user.id)
-        @user_eat_data_today = FoodEating.where(user_id: @current_user.id).where(created_at: Time.zone.now.all_day)
+        @user_eat_data = FoodEating.where(user_id: @current_user.user_id)
+        @user_eat_data_today = FoodEating.where(user_id: @current_user.user_id).where(created_at: Time.zone.now.all_day)
         # @user_eat_data_this_month = FoodEating.where(user_id: @current_user.id).where(created_at: Date.today.all_month)
         food_search()
 
         if (@reply_food_data != nil)
-          FoodEating.create(food_id: @reply_food_data[:id], user_id: @current_user.id)
+          FoodEating.create(food_id: @reply_food_data.id, user_id: @current_user.user_id)
           calc_total_calorie()
 
           response = @reply_food_data[:calorie] + "kcalです。" + "本日は#{@total_calorie}kcal摂取しています。"
           elsif (@user_message == "みす")
             response = "最新の入力内容を削除しました。。" 
-            message = FoodEating.where(user_id: @current_user.id).last().destroy
+            message = FoodEating.where(user_id: @current_user.user_id).last().destroy
 
           elsif (@user_message == "きょう")
             if @user_eat_data_today.present?
@@ -43,7 +43,7 @@ class LineMessagesController < ApplicationController
             end
 
           elsif (@user_message == "きのう")
-            @user_eat_data_yesterday = FoodEating.where(user_id: @current_user.id).where(created_at: 1.day.ago.all_day)
+            @user_eat_data_yesterday = FoodEating.where(user_id: @current_user.user_id).where(created_at: 1.day.ago.all_day)
             if @user_eat_data_yesterday.present?
                 eat_date_data_yesterday()
                 response = @total_eat_data_yesterday
@@ -52,7 +52,7 @@ class LineMessagesController < ApplicationController
             end
 
           elsif (@user_message == "こんしゅう")
-            @user_eat_data_this_week = FoodEating.where(user_id: @current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
+            @user_eat_data_this_week = FoodEating.where(user_id: @current_user.user_id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
             if @user_eat_data_this_week.present?
                 eat_date_data_this_week()
                 response = "#{Date.today.all_week}\n" + @total_eat_data_this_week
