@@ -1,0 +1,30 @@
+.main_container_profile
+  %h1.profile_top
+    プロフィールを登録してください。
+  .container
+    = form_for(@user_status, url:user_status_users_path, method: :post, html:{class: "form-horizontal", id:"form-margin"}) do |f|
+      .row
+        .col-sm-2.profile_text お名前(全角)
+        .col-sm-10.form-inline{style: "padding: 3px;"}
+          = f.text_field :name, class: "form-control input-sm", id: "name", placeholder: '名前を入力'
+      .row
+        .col-sm-2.profile_text 年齢（才）
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :age, class: "form-control input-sm", id: "name", placeholder: '年齢を入力'
+      .row
+        .col-sm-2.profile_text 性別
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.select :gender, ["男", "女"], placeholder: '性別を入力'
+      .row
+        .col-sm-2.profile_text 体重(kg)
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :weight, class: "form-control input-sm", id: "name", placeholder: '体重を入力'
+      .row
+        .col-sm-2.profile_text line_id※1
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :line_id, class: "form-control input-sm", id: "name", placeholder: 'line_idを入力'
+      .explain
+        line_idはlineで「あ」と入力すれば取得できます。
+        line_idを間違えると、食事管理はできません。
+      .text-left{style: "padding: 30px 0 30px 0;"}
+        = f.submit "プロフィール登録", class: "btn btn-success"
