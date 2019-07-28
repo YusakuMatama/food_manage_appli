@@ -1,21 +1,54 @@
-.main_container{
+.main_container_profile{
   width: 100vw;
   height: 100vh;
-  background-image: url("back_image_night.jpeg");
+  background-image: url("26764700e3b3036ab4bfe15bc5fd60da.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
-  object-fit: contain;
 }
+.main_container_login{
+  width: 100vw;
+  height: 100vh;
+  background-image: url("2e90317b2b525f9dd2295c6c7dfa1626.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+.profile_text{
+  color: white;
+  font-weight: bold;
+}
+.explain{
+  color: white;
+  font-weight: bold;
+}
+
+.login_text{
+  color: white;
+  font-weight: bold;
+}
+.login_top{
+  padding-top: 50px;
+  margin-left: 100px;
+  box-sizing: border-box;
+  color: white;
+  font-weight: bold;
+}
+
 .col-sm-2{
-  color: greenyellow;
 }
 .profile_top{
   padding-top: 50px;
   margin-left: 100px;
   box-sizing: border-box;
-  color: greenyellow;
+  font-weight: bold;
+  color: white;
 }
 #form-margin{
   margin-top: 30px;
 
 }
+#user_status_gender{
+  width: 192px;
+  height: 38px;
+}
+
+#delete-padding{}

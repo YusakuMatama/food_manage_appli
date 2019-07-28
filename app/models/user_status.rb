@@ -1,3 +1,5 @@
 class UserStatus < ApplicationRecord
-  # belongs_to :user
+  has_many :metabolisms
+  belongs_to :user
+  
 end

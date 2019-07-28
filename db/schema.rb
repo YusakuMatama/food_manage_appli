@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190725083740) do
+ActiveRecord::Schema.define(version: 20190726112234) do
 
   create_table "food_eatings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "food_id"
@@ -54,15 +54,14 @@ ActiveRecord::Schema.define(version: 20190725083740) do
   create_table "user_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "age"
-    t.string   "gender"
     t.string   "weight"
-    t.string   "active_level"
-    t.string   "est_energy_req"
+    t.integer  "est_energy_req"
     t.string   "line_id"
     t.integer  "metabolism_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
     t.index ["metabolism_id"], name: "index_user_statuses_on_metabolism_id", using: :btree
     t.index ["user_id"], name: "index_user_statuses_on_user_id", using: :btree
   end

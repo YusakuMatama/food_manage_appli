@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   post '/callback' => 'line_messages#callback'
   root 'users#index'
 
-  resources :users do
+  resources :users, only: [:index, :new, :edit, :update]do
     member do
       get 'graff'
     end
+    collection do
+        post "user_status"
+    end
   end
-
+  resources :foods, only: [:index, :new, :show]
 
 end
