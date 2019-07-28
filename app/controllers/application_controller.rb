@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
 
   def client
     @client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = "line_channel_secret"
-      config.channel_token = "line_channel_token"
+      config.channel_secret = ENV["line_channel_secret"]
+      config.channel_token = ENV["line_channel_token"]
+
     }
   end
   
