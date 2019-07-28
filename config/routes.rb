@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/callback' => 'line_messages#callback'
   root 'users#index'
 
-  resources :users, only: [:index, :new, :edit, :update]do
+  resources :users, only: [:index, :new, :edit, :update, :show]do
     member do
       get 'graff'
     end

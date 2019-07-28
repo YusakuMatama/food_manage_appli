@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+  end
+
+  def show
     @user = UserStatus.find_by(user_id: current_user.id)
     @metabolism_under = Metabolism.find_by(id: @user&.metabolism_id - 1)
     @metabolism_top = Metabolism.find_by(id: @user&.metabolism_id)
