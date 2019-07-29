@@ -10,6 +10,7 @@ class LineMessagesController < ApplicationController
     @total_eat_data_this_week = ""
     @total_eat_data_this_month = ""
     @reply_food_data = nil
+    @total_calorie = 0
   
     events = client.parse_events_from(body)
     
@@ -113,10 +114,5 @@ private
     end
   end
 
-  def calc_total_calorie
-    @user_eat_data_today.each do |eat_data|
-      @total_calorie += eat_data.food.calorie.to_i
-    end
-  end
 end
 
