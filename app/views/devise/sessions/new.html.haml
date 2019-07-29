@@ -11,12 +11,6 @@
         .col-sm-2.login_text パスワード
         .col-sm-10.form-inline{style: "padding: 3px;"}
           = f.password_field :password, autocomplete: "パスワード入力", class: "form-control input-sm", id: "name", placeholder: 'パスワード'
-
-      - if devise_mapping.rememberable?
-        .row
-          .col-sm-2.login_text チェックしてください
-          .col-sm-10.form-inline{style: "padding: 3px;"}
-            = f.check_box :remember_me, class: "form-control input-sm", id: "name"
       .text-left{style: "padding: 30px 0 30px 0;"}
         = f.submit "ログイン", class: "btn btn-success"
     = render "devise/shared/links"

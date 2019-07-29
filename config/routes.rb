@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :edit, :update, :show]do
     member do
       get 'graff'
+      patch "user_status"
     end
     collection do
         post "user_status"
     end
   end
-  resources :foods, only: [:index, :new, :show]
+  resources :foods, only: [:index, :new, :show, :new, :create]
 
 end

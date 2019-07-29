@@ -8,12 +8,20 @@ class UsersController < ApplicationController
     @user = UserStatus.find_by(user_id: current_user.id)
     @metabolism_under = Metabolism.find_by(id: @user&.metabolism_id - 1)
     @metabolism_top = Metabolism.find_by(id: @user&.metabolism_id)
+
+    @user_eat_data_today = FoodEating.where(user_id: current_user.id).where(created_at: Time.zone.now.all_day)
+    @total_calorie = 0
+    calc_total_calorie()
+
+    @user_eat_data_yesterday = FoodEating.where(user_id: current_user.id).where(created_at: 1.day.ago.all_day)
+    @user_eat_data_this_month = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.all_month)
+    @user_eat_data_this_week = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
   end
   
   def graff
     gon.data_calorie = []
     gon.data_date = [*(Date.today.beginning_of_week..Date.today.end_of_week)]
-    @user_eat_data_this_week = FoodEating.where(user_id: @current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
+    @user_eat_data_this_week = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
     @this_week = Date.today.all_week
     total_calorie_1 = 0
     total_calorie_2 = 0
@@ -23,35 +31,42 @@ class UsersController < ApplicationController
     total_calorie_6 = 0
     total_calorie_7 = 0
 
-      @user_eat_data.each do |eat_data|
-        today_eat_time = eat_data[:created_at].in_time_zone('Tokyo')
+      @user_eat_data_this_week.each do |eat_data|
+        today_eat_time = eat_data.created_at.in_time_zone('Tokyo')
         if (today_eat_time.to_s.match(/#{Date.today.beginning_of_week.to_s}.+/))
-          total_calorie_1 += eat_data[:calorie].to_i
+          total_calorie_1 += eat_data.food.calorie.to_i
 
         elsif (today_eat_time.to_s.match(/#{(Date.today.beginning_of_week + 1).to_s}.+/))
-          total_calorie_2 += eat_data[:calorie].to_i
+          total_calorie_2 += eat_data.food.calorie.to_i
 
         elsif (today_eat_time.to_s.match(/#{(Date.today.beginning_of_week + 2).to_s}.+/))
-          total_calorie_3 += eat_data[:calorie].to_i
+          total_calorie_3 += eat_data.food.calorie.to_i
 
         elsif (today_eat_time.to_s.match(/#{(Date.today.beginning_of_week + 3).to_s}.+/))
-          total_calorie_4 += eat_data[:calorie].to_i
+          total_calorie_4 += eat_data.food.calorie.to_i
 
         elsif (today_eat_time.to_s.match(/#{(Date.today.beginning_of_week + 4).to_s}.+/))
-          total_calorie_5 += eat_data[:calorie].to_i
+          total_calorie_5 += eat_data.food.calorie.to_i
 
         elsif (today_eat_time.to_s.match(/#{(Date.today.beginning_of_week + 5).to_s}.+/))
-          total_calorie_6 += eat_data[:calorie].to_i
+          total_calorie_6 += eat_data.food.calorie.to_i
 
         else
-          total_calorie_7 += eat_data[:calorie].to_i
+          total_calorie_7 += eat_data.food.calorie.to_i
         end        
       end
       gon.data_calorie.push(total_calorie_1, total_calorie_2, total_calorie_3, total_calorie_4, total_calorie_5, total_calorie_6, total_calorie_7)
   end
 
   def edit
-    @user = User.find(id: current_user.id)
+    @user_status = UserStatus.find_by(user_id: current_user.id)
+  end
+
+  def update
+    @user_status = UserStatus.find_by(user_id: current_user.id)
+    if @user_status.update(user_status_params)
+      redirect_to "/"
+    end
   end
 
   def new
@@ -59,8 +74,7 @@ class UsersController < ApplicationController
   end
 
   def user_status
-    user_status_params
-    @user_status = UserStatus.new(@user_status_params)
+    @user_status = UserStatus.new(user_status_params)
     
     if @user_status.save
       redirect_to "/"

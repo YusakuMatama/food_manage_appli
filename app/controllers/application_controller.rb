@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery except: [:callback]
   before_action :validate_signature, only:[:callback]
 
+  
   def validate_signature
     body = request.body.read
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -22,4 +23,13 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
       root_path
   end
+
+  def calc_total_calorie
+    @user_eat_data_today.each do |eat_data|
+      @total_calorie += eat_data.food.calorie.to_i
+    end
+  end
+
+  
+
 end

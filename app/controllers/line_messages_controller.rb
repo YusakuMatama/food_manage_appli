@@ -1,11 +1,10 @@
 class LineMessagesController < ApplicationController
   require "rubygems"
-  require 'line/bot'  # gem 'line-bot-api'
+  require 'line/bot'
 
   def callback
     body = request.body.read
     @food_menu = Food.all
-    @total_calorie = 0
     @total_eat_data_today = ""
     @total_eat_data_yesterday = ""
     @total_eat_data_this_week = ""
@@ -22,7 +21,6 @@ class LineMessagesController < ApplicationController
         @user_message = params["events"][0]["message"]["text"]
         @user_eat_data = FoodEating.where(user_id: @current_user.user_id)
         @user_eat_data_today = FoodEating.where(user_id: @current_user.user_id).where(created_at: Time.zone.now.all_day)
-        # @user_eat_data_this_month = FoodEating.where(user_id: @current_user.id).where(created_at: Date.today.all_month)
         food_search()
 
         if (@reply_food_data != nil)
@@ -62,13 +60,6 @@ class LineMessagesController < ApplicationController
 
           elsif (@user_message == "id")     
             response = @user_id
-          # elsif (@user_message == "こんげつ")
-        #   if (@total_eat_data_this_month.empty?
-        #       eat_date_data_this_month()
-        #       response = @total_eat_data_this_month
-        #     else
-        #       response = "何も食べていません。"
-        #   end
 
           elsif (@user_message == "へるぷ")
             response = "コマンド入力：結果\n食品名：カロリーと本日の合計カロリー表示\nきょう：今日食べたものを表示\nきのう：昨日食べたものを表示\nこんしゅう：今週食べたものを表示\nこんげつ：今月食べたものを表示\nみす：最新データを消去"
@@ -93,9 +84,10 @@ class LineMessagesController < ApplicationController
             client.reply_message(event['replyToken'], message)
         end
       }
-      head :ok
-    end
+    head :ok
+  end
 
+private
   def food_search
     @reply_food_data = Food.find_by(hiragana_name: @user_message)
   end
@@ -121,17 +113,5 @@ class LineMessagesController < ApplicationController
     end
   end
 
-  # def eat_date_data_this_month
-  #   @user_eat_data_this_month.each do |eat_data|
-  #     time = eat_data.created_at.in_time_zone('Tokyo')
-  #     @total_eat_data_this_month += eat_data.food.name + "_" + eat_data.food.calorie + "kcal" + "::" + "#{eat_time.day}" + "日" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
-  #   end
-  # end
-
-  def calc_total_calorie
-    @user_eat_data_today.each do |eat_data|
-      @total_calorie += eat_data.food.calorie.to_i
-    end
-  end
 end
 
