@@ -71,4 +71,6 @@ private
     search_menu_and_menu_category
     params.require(:food).permit(:name, :hiragana_name, :calorie).merge(menu_id: @menu.id, menu_category_id: @menu_category.id)
   end
+
+  
 end

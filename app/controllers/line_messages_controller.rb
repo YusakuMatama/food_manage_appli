@@ -113,5 +113,10 @@ private
     end
   end
 
+  def calc_total_calorie
+    @user_eat_data_today.each do |eat_data|
+      @total_calorie += eat_data.food.calorie.to_i
+    end
+  end
 end
 

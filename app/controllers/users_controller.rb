@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
   def show
     @user = UserStatus.find_by(user_id: current_user.id)
-    @metabolism_under = Metabolism.find_by(id: @user&.metabolism_id - 1)
-    @metabolism_top = Metabolism.find_by(id: @user&.metabolism_id)
+    @metabolism_under = Metabolism.find_by(id: @user.metabolism_id - 1)
+    @metabolism_top = Metabolism.find_by(id: @user.metabolism_id)
 
     @user_eat_data_today = FoodEating.where(user_id: current_user.id).where(created_at: Time.zone.now.all_day)
     @total_calorie = 0
@@ -82,6 +82,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def calc_total_calorie
+    @user_eat_data_today.each do |eat_data|
+      @total_calorie += eat_data.food.calorie.to_i
+    end
+  end
 
   def calc_est_energy_require
     @age = params.require(:user_status).require(:age).to_i
