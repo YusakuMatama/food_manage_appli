@@ -21,6 +21,13 @@
         .col-sm-2.login_text パスワード確認
         .col-sm-10.form-inline{style: "padding: 3px;"}
           = f.password_field :password_confirmation, autocomplete: "パスワード確認", class: "form-control input-sm", id: "name", placeholder: 'パスワード確認'
+      .row
+        .col-sm-2.profile_text line_id※1
+        .col-sm-10.form-inline{:style => "padding: 3px;"}
+          = f.text_field :line_id, class: "form-control input-sm", id: "name", placeholder: 'line_idを入力'
+      .explain{style: "color: blue;"}
+        line_idはlineで「id」と入力すれば取得できます。
+        line_idを間違えると、食事管理はできません。
       .text-left{style: "padding: 30px 0 30px 0;"}
         = f.submit "登録", class: "btn btn-success", id: "delete-padding"
     = render "devise/shared/links"

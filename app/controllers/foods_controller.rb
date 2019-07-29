@@ -1,7 +1,8 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!
   before_action :food_set
-  
+  before_action :confirm_user_profile
+
   def index
   end
 
@@ -10,7 +11,6 @@ class FoodsController < ApplicationController
 
   def new
     @new_food = Food.new
-
     @menu = Menu.all
 
     @japanese_category = MenuCategory.eager_load(:foods).where(foods: {menu_id: 1}).map { |h| h[:name] }
@@ -34,12 +34,10 @@ class FoodsController < ApplicationController
     gon.snacks = @snacks_category
     gon.sweets = @sweets_category
     gon.pans = @pans_category
-
   end
 
   def create
     @new_food = Food.new(food_params)
-
     if @new_food.save
       redirect_to "/"
     end
@@ -62,7 +60,6 @@ private
   def search_menu_and_menu_category
     @menu = params.require(:food).permit(:menu_id)
     @menu = Menu.find_by(name: @menu["menu_id"])
-
     @menu_category = params.require(:food).permit(:menu_category_id)
     @menu_category = MenuCategory.find_by(name: @menu_category["menu_category_id"])
   end
@@ -72,5 +69,9 @@ private
     params.require(:food).permit(:name, :hiragana_name, :calorie).merge(menu_id: @menu.id, menu_category_id: @menu_category.id)
   end
 
-  
+  def confirm_user_profile
+    if current_user.user_status.nil?
+      redirect_to "/users/new"
+    end
+  end
 end

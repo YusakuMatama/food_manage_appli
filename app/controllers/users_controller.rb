@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :confirm_user_profile, except: [:index, :new]
 
   def index
   end
@@ -82,7 +83,6 @@ class UsersController < ApplicationController
   end
 
   private
-
   def calc_est_energy_require
     @age = params.require(:user_status).require(:age).to_i
     @gender = params.require(:user_status).require(:gender)
@@ -92,6 +92,12 @@ class UsersController < ApplicationController
 
   def user_status_params
     calc_est_energy_require
-    @user_status_params = params.require(:user_status).permit(:name, :age, :gender, :weight, :line_id).merge(est_energy_req: @est_energy_req, metabolism_id: @metabolism.id, user_id: current_user.id)
+    @user_status_params = params.require(:user_status).permit(:name, :age, :gender, :weight).merge(est_energy_req: @est_energy_req, metabolism_id: @metabolism.id, user_id: current_user.id)
+  end
+
+  def confirm_user_profile
+    if current_user.user_status.nil?
+      redirect_to "/users/new"
+    end
   end
 end
