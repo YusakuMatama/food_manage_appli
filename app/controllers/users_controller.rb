@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :confirm_user_profile, except: [:index, :new]
+  before_action :confirm_user_profile, except: [:index, :new, :user_status]
 
   def index
   end

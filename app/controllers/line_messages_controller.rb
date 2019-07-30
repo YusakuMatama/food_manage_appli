@@ -17,9 +17,9 @@ class LineMessagesController < ApplicationController
     events.each { |event|
       @user_id = params["events"][0]["source"]["userId"]
       @current_user = User.find_by(line_id: @user_id)
+      @user_message = params["events"][0]["message"]["text"]
 
       if (@current_user != nil)
-        @user_message = params["events"][0]["message"]["text"]
         @user_eat_data = FoodEating.where(user_id: @current_user.id)
         @user_eat_data_today = FoodEating.where(user_id: @current_user.id).where(created_at: Time.zone.now.all_day)
         food_search()
