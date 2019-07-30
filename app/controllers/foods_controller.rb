@@ -1,5 +1,4 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!
   before_action :food_set
   before_action :confirm_user_profile
 
