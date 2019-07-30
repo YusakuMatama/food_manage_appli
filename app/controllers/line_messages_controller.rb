@@ -59,8 +59,6 @@ class LineMessagesController < ApplicationController
                 response = "何も食べていません。"
             end
 
-          elsif (@user_message == "id")     
-            response = @user_id
 
           elsif (@user_message == "へるぷ")
             response = "コマンド入力：結果\n食品名：カロリーと本日の合計カロリー表示\nきょう：今日食べたものを表示\nきのう：昨日食べたものを表示\nこんしゅう：今週食べたものを表示\nこんげつ：今月食べたものを表示\nみす：最新データを消去"
@@ -72,6 +70,8 @@ class LineMessagesController < ApplicationController
             response = "入力内容に誤りがあります。登録できる食べ物については、下記サイトの「カロリー早見表」に記載されている食べ物になります。\nhttps://food-manage-appli.herokuapp.com/"
         end
   
+        elsif (@user_message == "id")     
+          response = @user_id
         else
           response = "新規登録されていません。下記サイトに新規登録頂き、「使い方ページ」をご確認ください。\nhttps://food-manage-appli.herokuapp.com/"
       end
