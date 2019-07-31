@@ -1,16 +1,15 @@
 .main_container_profile{
-  width: 100vw;
+  min-width:1000px;
   height: 100vh;
   background-image: url("/images/26764700e3b3036ab4bfe15bc5fd60da.jpg");
   background-repeat: no-repeat;
   background-size: 100vw 100vh;
 }
 .main_container_login{
-  width: 100vw;
-  height: 100vh;
   background-image: url("/images/2e90317b2b525f9dd2295c6c7dfa1626.jpg");
   background-repeat: no-repeat;
   background-size:100vw 100vh;
+  min-width:1000px;
 }
 .profile_text{
   color: white;
