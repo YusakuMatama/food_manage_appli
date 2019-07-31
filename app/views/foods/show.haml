@@ -2,7 +2,6 @@
 - if (params[:id] == "1")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     和食
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -55,10 +54,10 @@
             =":" 
             = japanese_food.calorie
             kcal
+  = render "layouts/food-data"
 - if (params[:id] == "2")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     洋食
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -91,10 +90,10 @@
             =":" 
             = western_food.calorie
             kcal
+  = render "layouts/food-data"
 - if (params[:id] == "3")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     中華
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -137,10 +136,10 @@
             =":" 
             = chinese_food.calorie
             kcal
+  = render "layouts/food-data"
 - if (params[:id] == "4")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     ファーストフード
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -163,10 +162,10 @@
             =":" 
             = fast_food.calorie
             kcal
+  = render "layouts/food-data"
 - if (params[:id] == "5")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     ドリンク
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -189,11 +188,10 @@
             =":" 
             = drink.calorie
             kcal
-
+  = render "layouts/food-data"
 - if (params[:id] == "6")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     各国料理
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -207,10 +205,10 @@
             = other_country_food.calorie
             kcal
 
+  = render "layouts/food-data"
 - if (params[:id] == "7")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     おつまみ
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -223,10 +221,10 @@
             =":" 
             = otumami.calorie
             kcal
+  = render "layouts/food-data"
 - if (params[:id] == "8")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     スナック菓子
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -239,11 +237,10 @@
             =":" 
             = snack.calorie
             kcal
-
+  = render "layouts/food-data"
 - if (params[:id] == "9")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     スイーツ
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -266,10 +263,10 @@
             =":" 
             = sweet.calorie
             kcal
+  = render "layouts/food-data"
 - if (params[:id] == "10")
   %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
     調理パン
-  = render "layouts/food-data"
   .container-fluid
     .row
       .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
@@ -292,3 +289,4 @@
             =":" 
             = pan.calorie
             kcal
+  = render "layouts/food-data"

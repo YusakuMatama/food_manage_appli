@@ -64,14 +64,14 @@
       %h4 
         本日
       = render partial:'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_today }          
-    %button.alert-info.text-left.w-25{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample1", "data-toggle" => "collapse", :type => "button"}
+    %button.alert-info.text-left{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample1", "data-toggle" => "collapse", :type => "button"}
       昨日の食事(クリック)
     #collapseExample1.collapse
       .border.p-3.p-2.bd-highlight.mb-2
         %h4 
           昨日
         = render partial:'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_yesterday }          
-    %button.alert-info.text-left.w-25.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample2", "data-toggle" => "collapse", :type => "button"}
+    %button.alert-info.text-left.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample2", "data-toggle" => "collapse", :type => "button"}
       先週の食事(クリック)
     #collapseExample2.collapse
       .border.p-3.p-2.bd-highlight.mb-2
@@ -79,7 +79,7 @@
           先週
           = Date.today.all_week
         = render partial: 'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_this_week }          
-    %button.alert-info.text-left.w-25.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample3", "data-toggle" => "collapse", :type => "button"}
+    %button.alert-info.text-left.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample3", "data-toggle" => "collapse", :type => "button"}
       今月の食事(クリック)
     #collapseExample3.collapse
       .border.p-3.p-2.bd-highlight.mb-2
@@ -87,7 +87,7 @@
           今月
           = Date.today.all_month
         = render partial: 'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_this_month }          
-    %button.alert-info.text-left.w-25.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample4", "data-toggle" => "collapse", :type => "button"}
+    %button.alert-info.text-left.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample4", "data-toggle" => "collapse", :type => "button"}
       過去全ての食事(クリック)
     #collapseExample4.collapse
       .border.p-3.p-2.bd-highlight.mb-2
