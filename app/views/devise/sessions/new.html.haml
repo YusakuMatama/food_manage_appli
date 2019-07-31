@@ -5,11 +5,11 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name), html:{class: "form-horizontal", id:"form-margin"}) do |f|
       .row
         .col-sm-2.login_text メールアドレス
-        .col-sm-10.form-inline{style: "padding: 3px;"}
+        .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
           = f.email_field :email, autofocus: true, autocomplete: "メールアドレス", class: "form-control input-sm", id: "name", placeholder: 'メールアドレス'
       .row
         .col-sm-2.login_text パスワード
-        .col-sm-10.form-inline{style: "padding: 3px;"}
+        .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
           = f.password_field :password, autocomplete: "パスワード入力", class: "form-control input-sm", id: "name", placeholder: 'パスワード'
       .text-left{style: "padding: 30px 0 30px 0;"}
         = f.submit "ログイン", class: "btn btn-success"

@@ -6,7 +6,7 @@
       = render "devise/shared/error_messages", resource: resource
       .row
         .col-sm-2.login_text メールアドレス
-        .col-sm-10.form-inline{style: "padding: 3px;"}
+        .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
           = f.email_field :email, autofocus: true, autocomplete: "メールアドレス", class: "form-control input-sm", id: "name", placeholder: 'メールアドレス'
       .row
         .col-sm-2.login_text
@@ -15,15 +15,15 @@
           - if @minimum_password_length
             %em
               (#{@minimum_password_length} 文字以上入力)
-        .col-sm-10.form-inline{style: "padding: 3px;"}
+        .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
           = f.password_field :password, autocomplete: "パスワード登録", class: "form-control input-sm", id: "name", placeholder: 'パスワード'
       .row
         .col-sm-2.login_text パスワード確認
-        .col-sm-10.form-inline{style: "padding: 3px;"}
+        .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
           = f.password_field :password_confirmation, autocomplete: "パスワード確認", class: "form-control input-sm", id: "name", placeholder: 'パスワード確認'
       .row
         .col-sm-2.profile_text line_id※1
-        .col-sm-10.form-inline{:style => "padding: 3px;"}
+        .col-sm-10.form-inline{:style => "padding: 3px; margin-left: 15px;"}
           = f.text_field :line_id, class: "form-control input-sm", id: "name", placeholder: 'line_idを入力'
       .explain{style: "color: blue;"}
         line_idはlineで「id」と入力すれば取得できます。

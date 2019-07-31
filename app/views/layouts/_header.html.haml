@@ -17,6 +17,8 @@
         %li.nav-item
           = link_to "カロリー早見表", foods_path, class: "nav-link"
         %li.nav-item
+          = link_to "食品の登録", new_food_path, class: "nav-link"
+        %li.nav-item
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link"
       - else
         %li.nav-item

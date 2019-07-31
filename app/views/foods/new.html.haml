@@ -1,26 +1,26 @@
 = render "layouts/header"
 .main_container_profile
   .container
-  = form_for(@new_food, html:{class: "form-horizontal", id:"form-margin"}) do |f|
+  = form_for(@new_food, html:{class: "form-horizontal"}) do |f|
     .row
       .col-sm-2.profile_text 食品名
-      .col-sm-10.form-inline{style: "padding: 3px;"}
+      .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
         = f.text_field :name, class: "form-control input-sm", id: "name", placeholder: '食品名'
     .row
       .col-sm-2.profile_text 食品名（ひらがな)
-      .col-sm-10.form-inline{style: "padding: 3px;"}
+      .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
         = f.text_field :hiragana_name, class: "form-control input-sm", id: "name", placeholder: '食品名（ひらがな）'
     .row
       .col-sm-2.profile_text カロリー（kcal）
-      .col-sm-10.form-inline{style: "padding: 3px;"}
+      .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
         = f.text_field :calorie, class: "form-control input-sm", id: "name", placeholder: 'カロリー'
     .row
       .col-sm-2.profile_text ジャンル
-      .col-sm-10.form-inline{style: "padding: 3px;"}
+      .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
         = f.select :menu_id, @menu.map { |h| h[:name] }
     .row
       .col-sm-2.profile_text 詳細ジャンル
-      .col-sm-10.form-inline{style: "padding: 3px;"}
+      .col-sm-10.form-inline{style: "padding: 3px; margin-left: 15px;"}
         = f.select :menu_category_id, @japanese_category, prompt: "-----"
 
     .explain.text-primary

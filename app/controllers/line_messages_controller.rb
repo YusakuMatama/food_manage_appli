@@ -61,7 +61,7 @@ class LineMessagesController < ApplicationController
 
 
           elsif (@user_message == "へるぷ")
-            response = "コマンド入力：結果\n食品名：カロリーと本日の合計カロリー表示\nきょう：今日食べたものを表示\nきのう：昨日食べたものを表示\nこんしゅう：今週食べたものを表示\nこんげつ：今月食べたものを表示\nみす：最新データを消去"
+            response = "コマンド入力：結果\n食品名：カロリーと本日の合計カロリー表示\nきょう：今日食べたものを表示\nきのう：昨日食べたものを表示\nこんしゅう：今週食べたものを表示\nみす：最新データを消去"
 
           elsif (@user_message == "ほーむ")     
             response = "https://food-manage-appli.herokuapp.com/"
