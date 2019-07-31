@@ -1,35 +1,29 @@
 .main_container_profile{
-  width: 100vw;
   min-height: 749px;
+  background-color: #f8f9fa;
 }
 .main_container_login{
-  width: 100vw;
   min-height: 749px;
-}
-.jumbotron{
-  background-image: url("/images/26764700e3b3036ab4bfe15bc5fd60da.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
+  background-color: #f8f9fa;
 }
 .profile_text{
-  color: white;
+  color: black;
   font-weight: bold;
 }
 .explain{
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
 .login_text{
-  color: white;
+  color: black;
   font-weight: bold;
 }
 .login_top{
   padding-top: 50px;
   margin-left: 100px;
   box-sizing: border-box;
-  color: white;
+  color: black;
   font-weight: bold;
 }
 
@@ -40,7 +34,7 @@
   margin-left: 100px;
   box-sizing: border-box;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 #form-margin{
   margin-top: 30px;
@@ -77,4 +71,8 @@
 }
 #pans_genre{
   display: none;
+}
+
+select{
+  background-color: #fff;
 }

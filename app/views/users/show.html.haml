@@ -3,7 +3,7 @@
   %h1.text-center.p-3.mb-2.bg-primary.text-white
     カロリー消費量
   .d-flex.flex-column.bd-highlight.mb-3
-    .p-2.bd-highlight.mb-2.bg-secondary.text-white
+    .p-2.bd-highlight.alert.alert-primary
       %h4
         =@user.name
         さんのデータ
@@ -31,7 +31,7 @@
             = @total_calorie - @user.est_energy_req
           %span{style: "font-weight: bold;"}
             kcal超過しています。本日はもう食べないほうがいいです。
-    .p-2.bd-highlight.bg-info.text-white
+    .p-2.bd-highlight.alert.alert-info
       - unless @user.metabolism_id == 1
         %h4.card-title 
           = @metabolism_under.age_base
@@ -60,20 +60,47 @@
   %h1.text-center.p-3.mb-2.bg-primary.text-white
     食事データ
   .d-flex.flex-column.bd-highlight.mb-3
-    .p-2.bd-highlight.mb-2.bg-secondary.text-white
+    .p-2.bd-highlight.mb-2.alert.alert-primary
       %h4 
         本日
-      %ul.list-unstyled
-        - @user_eat_data_today.each do |eat_data|
-          %li
-          = eat_data.created_at.hour
-          時
-          = eat_data.created_at.min
-          分：
-          = eat_data.food.name
-          = eat_data.food.calorie 
-          kcal
-        %li
-    = link_to "昨日の食事", "/"
-    = link_to "今週の食事", "/"
-    = link_to "今月の食事", "/"
+      = render partial:'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_today }          
+    %button.alert-info.text-left.w-25{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample1", "data-toggle" => "collapse", :type => "button"}
+      昨日の食事(クリック)
+    #collapseExample1.collapse
+      .border.p-3.p-2.bd-highlight.mb-2
+        %h4 
+          昨日
+        = render partial:'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_yesterday }          
+    %button.alert-info.text-left.w-25.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample2", "data-toggle" => "collapse", :type => "button"}
+      先週の食事(クリック)
+    #collapseExample2.collapse
+      .border.p-3.p-2.bd-highlight.mb-2
+        %h4 
+          先週
+          = Date.today.all_week
+        = render partial: 'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_this_week }          
+    %button.alert-info.text-left.w-25.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample3", "data-toggle" => "collapse", :type => "button"}
+      今月の食事(クリック)
+    #collapseExample3.collapse
+      .border.p-3.p-2.bd-highlight.mb-2
+        %h4 
+          今月
+          = Date.today.all_month
+        = render partial: 'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data_this_month }          
+    %button.alert-info.text-left.w-25.mt-1.mt-sm-1.mt-md-1.mt-lg-1.mt-xl-1{"aria-controls" => "collapseExample", "aria-expanded" => "false", "data-target" => "#collapseExample4", "data-toggle" => "collapse", :type => "button"}
+      過去全ての食事(クリック)
+    #collapseExample4.collapse
+      .border.p-3.p-2.bd-highlight.mb-2
+        %h4 
+          過去データ
+          = @user_eat_data[0].created_at.year
+          年
+          = @user_eat_data[0].created_at.month
+          月
+          から
+          = @user_eat_data.last().created_at.year
+          年
+          = @user_eat_data.last().created_at.month
+          月
+          まで
+        = render partial: 'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data }          

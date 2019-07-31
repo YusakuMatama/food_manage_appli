@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @total_calorie = 0
     calc_total_calorie()
 
+    @user_eat_data = FoodEating.where(user_id: current_user.id)
     @user_eat_data_yesterday = FoodEating.where(user_id: current_user.id).where(created_at: 1.day.ago.all_day)
     @user_eat_data_this_month = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.all_month)
     @user_eat_data_this_week = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)

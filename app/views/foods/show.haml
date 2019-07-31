@@ -1,331 +1,294 @@
 = render "layouts/header"
-.main_container
-  - if (params[:id] == "1")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      和食
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              定食
-            %ul.list-unstyled
-              - @japanese_foods.where(menu_category_id: 1).each do |japanese_food|
-                %li
-                = japanese_food.name
-                =":" 
-                = japanese_food.calorie
-                kcal
-      .p-2.bd-highlight
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              丼もの              
-            %ul.list-unstyled
-              - @japanese_foods.where(menu_category_id: 2).each do |japanese_food|
-                %li
-                = japanese_food.name
-                =":" 
-                = japanese_food.calorie
-                kcal
-            
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              麺類              
-            %ul.list-unstyled
-              - @japanese_foods.where(menu_category_id:  3).each do |japanese_food|
-                %li
-                = japanese_food.name
-                =":" 
-                = japanese_food.calorie
-                kcal
+- if (params[:id] == "1")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    和食
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4
+          定食
+        %ul.list-unstyled
+          - @japanese_foods.where(menu_category_id: 1).each do |japanese_food|
+            %li
+            = japanese_food.name
+            =":" 
+            = japanese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4
+          丼もの              
+        %ul.list-unstyled
+          - @japanese_foods.where(menu_category_id: 2).each do |japanese_food|
+            %li
+            = japanese_food.name
+            =":" 
+            = japanese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4
+          麺類              
+        %ul.list-unstyled
+          - @japanese_foods.where(menu_category_id:  3).each do |japanese_food|
+            %li
+            = japanese_food.name
+            =":" 
+            = japanese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4
+          一品料理              
+        %ul.list-unstyled
+          - @japanese_foods.where(menu_category_id: 4).each do |japanese_food|
+            %li
+            = japanese_food.name
+            =":" 
+            = japanese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4 
+          お寿司              
+        %ul.list-unstyled
+          - @japanese_foods.where(menu_category_id: 5).each do |japanese_food|
+            %li
+            = japanese_food.name
+            =":" 
+            = japanese_food.calorie
+            kcal
+- if (params[:id] == "2")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    洋食
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          ご飯もの＆パン類
+        %ul.list-unstyled
+          - @western_foods.where(menu_category_id: 6).each do |western_food|
+            %li
+            = western_food.name
+            =":" 
+            = western_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          パスタ              
+        %ul.list-unstyled
+          - @western_foods.where(menu_category_id: 7).each do |western_food|
+            %li
+            = western_food.name
+            =":" 
+            = western_food.calorie
+            kcal              
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          一品料理              
+        %ul.list-unstyled
+          - @western_foods.where(menu_category_id:  4).each do |western_food|
+            %li
+            = western_food.name
+            =":" 
+            = western_food.calorie
+            kcal
+- if (params[:id] == "3")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    中華
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          定食
+        %ul.list-unstyled
+          - @chinese_foods.where(menu_category_id: 1).each do |chinese_food|
+            %li
+            = chinese_food.name
+            =":" 
+            = chinese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          一品料理              
+        %ul.list-unstyled
+          - @chinese_foods.where(menu_category_id: 4).each do |chinese_food|
+            %li
+            = chinese_food.name
+            =":" 
+            = chinese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          丼もの              
+        %ul.list-unstyled
+          - @chinese_foods.where(menu_category_id:  2).each do |chinese_food|
+            %li
+            = chinese_food.name
+            =":" 
+            = chinese_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          麺類             
+        %ul.list-unstyled
+          - @chinese_foods.where(menu_category_id:  3).each do |chinese_food|
+            %li
+            = chinese_food.name
+            =":" 
+            = chinese_food.calorie
+            kcal
+- if (params[:id] == "4")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    ファーストフード
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          バーガー類
+        %ul.list-unstyled
+          - @fast_foods.where(menu_category_id: 8).each do |fast_food|
+            %li
+            = fast_food.name
+            =":" 
+            = fast_food.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          サイドメニュー
+        %ul.list-unstyled
+          - @fast_foods.where(menu_category_id: 9).each do |fast_food|
+            %li
+            = fast_food.name
+            =":" 
+            = fast_food.calorie
+            kcal
+- if (params[:id] == "5")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    ドリンク
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          アルコール
+        %ul.list-unstyled
+          - @drinks.where(menu_category_id: 10).each do |drink|
+            %li
+            = drink.name
+            =":" 
+            = drink.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          ソフトドリンク
+        %ul.list-unstyled
+          - @drinks.where(menu_category_id: 11).each do |drink|
+            %li
+            = drink.name
+            =":" 
+            = drink.calorie
+            kcal
 
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              一品料理              
-            %ul.list-unstyled
-              - @japanese_foods.where(menu_category_id: 4).each do |japanese_food|
-                %li
-                = japanese_food.name
-                =":" 
-                = japanese_food.calorie
-                kcal
+- if (params[:id] == "6")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    各国料理
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          ご飯もの＆麺類
+        %ul.list-unstyled
+          - @other_country_foods.where(menu_category_id: 17).each do |other_country_food|
+            %li
+            = other_country_food.name
+            =":" 
+            = other_country_food.calorie
+            kcal
 
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              お寿司              
-            %ul.list-unstyled
-              - @japanese_foods.where(menu_category_id: 5).each do |japanese_food|
-                %li
-                = japanese_food.name
-                =":" 
-                = japanese_food.calorie
-                kcal
-  
+- if (params[:id] == "7")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    おつまみ
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          一品料理
+        %ul.list-unstyled
+          - @otumamis.where(menu_category_id: 4).each do |otumami|
+            %li
+            = otumami.name
+            =":" 
+            = otumami.calorie
+            kcal
+- if (params[:id] == "8")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    スナック菓子
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          スナック菓子
+        %ul.list-unstyled
+          - @snacks.where(menu_category_id: 12).each do |snack|
+            %li
+            = snack.name
+            =":" 
+            = snack.calorie
+            kcal
 
-  - if (params[:id] == "2")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      洋食
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              ご飯もの＆パン類
-            %ul.list-unstyled
-              - @western_foods.where(menu_category_id: 6).each do |western_food|
-                %li
-                = western_food.name
-                =":" 
-                = western_food.calorie
-                kcal
-      .p-2.bd-highlight
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              パスタ              
-            %ul.list-unstyled
-              - @western_foods.where(menu_category_id: 7).each do |western_food|
-                %li
-                = western_food.name
-                =":" 
-                = western_food.calorie
-                kcal
-            
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              一品料理              
-            %ul.list-unstyled
-              - @western_foods.where(menu_category_id:  4).each do |western_food|
-                %li
-                = western_food.name
-                =":" 
-                = western_food.calorie
-                kcal
-
-  - if (params[:id] == "3")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      中華
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              定食
-            %ul.list-unstyled
-              - @chinese_foods.where(menu_category_id: 1).each do |chinese_food|
-                %li
-                = chinese_food.name
-                =":" 
-                = chinese_food.calorie
-                kcal
-      .p-2.bd-highlight
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              一品料理              
-            %ul.list-unstyled
-              - @chinese_foods.where(menu_category_id: 4).each do |chinese_food|
-                %li
-                = chinese_food.name
-                =":" 
-                = chinese_food.calorie
-                kcal
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              丼もの              
-            %ul.list-unstyled
-              - @chinese_foods.where(menu_category_id:  2).each do |chinese_food|
-                %li
-                = chinese_food.name
-                =":" 
-                = chinese_food.calorie
-                kcal
-
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              麺類             
-            %ul.list-unstyled
-              - @chinese_foods.where(menu_category_id:  3).each do |chinese_food|
-                %li
-                = chinese_food.name
-                =":" 
-                = chinese_food.calorie
-                kcal
-
-  - if (params[:id] == "4")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      ファーストフード
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              バーガー類
-            %ul.list-unstyled
-              - @fast_foods.where(menu_category_id: 8).each do |fast_food|
-                %li
-                = fast_food.name
-                =":" 
-                = fast_food.calorie
-                kcal
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              サイドメニュー
-            %ul.list-unstyled
-              - @fast_foods.where(menu_category_id: 9).each do |fast_food|
-                %li
-                = fast_food.name
-                =":" 
-                = fast_food.calorie
-                kcal
-  - if (params[:id] == "5")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      ドリンク
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              アルコール
-            %ul.list-unstyled
-              - @drinks.where(menu_category_id: 10).each do |drink|
-                %li
-                = drink.name
-                =":" 
-                = drink.calorie
-                kcal
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              ソフトドリンク
-            %ul.list-unstyled
-              - @drinks.where(menu_category_id: 11).each do |drink|
-                %li
-                = drink.name
-                =":" 
-                = drink.calorie
-                kcal
-
-  - if (params[:id] == "6")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      各国料理
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              ご飯もの＆麺類
-            %ul.list-unstyled
-              - @other_country_foods.where(menu_category_id: 17).each do |other_country_food|
-                %li
-                = other_country_food.name
-                =":" 
-                = other_country_food.calorie
-                kcal
-
-  - if (params[:id] == "7")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      おつまみ
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              一品料理
-            %ul.list-unstyled
-              - @otumamis.where(menu_category_id: 4).each do |otumami|
-                %li
-                = otumami.name
-                =":" 
-                = otumami.calorie
-                kcal
-  - if (params[:id] == "8")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      スナック菓子
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              スナック菓子
-            %ul.list-unstyled
-              - @snacks.where(menu_category_id: 12).each do |snack|
-                %li
-                = snack.name
-                =":" 
-                = snack.calorie
-                kcal
-
-  - if (params[:id] == "9")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      スイーツ
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              洋スイーツ
-            %ul.list-unstyled
-              - @sweets.where(menu_category_id: 13).each do |sweet|
-                %li
-                = sweet.name
-                =":" 
-                = sweet.calorie
-                kcal
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              和スイーツ
-            %ul.list-unstyled
-              - @sweets.where(menu_category_id: 14).each do |sweet|
-                %li
-                = sweet.name
-                =":" 
-                = sweet.calorie
-                kcal
-  - if (params[:id] == "10")
-    %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
-      調理パン
-    .d-flex.flex-row.bd-highlight.mb-3
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              惣菜パン
-            %ul.list-unstyled
-              - @pans.where(menu_category_id: 15).each do |pan|
-                %li
-                = pan.name
-                =":" 
-                = pan.calorie
-                kcal
-      .p-2.bd-highlight 
-        .card.h-100{style: "width: 20rem;"}
-          .card-body
-            %h4.card-title 
-              菓子パン
-            %ul.list-unstyled
-              - @pans.where(menu_category_id: 16).each do |pan|
-                %li
-                = pan.name
-                =":" 
-                = pan.calorie
-                kcal
+- if (params[:id] == "9")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    スイーツ
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          洋スイーツ
+        %ul.list-unstyled
+          - @sweets.where(menu_category_id: 13).each do |sweet|
+            %li
+            = sweet.name
+            =":" 
+            = sweet.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          和スイーツ
+        %ul.list-unstyled
+          - @sweets.where(menu_category_id: 14).each do |sweet|
+            %li
+            = sweet.name
+            =":" 
+            = sweet.calorie
+            kcal
+- if (params[:id] == "10")
+  %h1.text-center.p-3.mb-2.bg-primary.text-white.w-100.p-3
+    調理パン
+  = render "layouts/food-data"
+  .container-fluid
+    .row
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          惣菜パン
+        %ul.list-unstyled
+          - @pans.where(menu_category_id: 15).each do |pan|
+            %li
+            = pan.name
+            =":" 
+            = pan.calorie
+            kcal
+      .p-2.bd-highlight.border.border-primary.m-sm-3.m-md-3.m-lg-3.m-xl-3{style: "width: 20rem;"}
+        %h4.card-title 
+          菓子パン
+        %ul.list-unstyled
+          - @pans.where(menu_category_id: 16).each do |pan|
+            %li
+            = pan.name
+            =":" 
+            = pan.calorie
+            kcal

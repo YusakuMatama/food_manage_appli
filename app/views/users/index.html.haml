@@ -1,6 +1,7 @@
 = render "layouts/header"
 .main_container
-  = "ラインボットの使い方"
+  %span{style: "text-decoration: underline; color: blue; font-weight: bold;"} 
+    = "ラインボットの使い方"
   %br  
   &nbsp;
   = " 1. ユーザー新規登録をする。"
@@ -15,7 +16,8 @@
   = " 2. 新規登録完了後、ラインのメッセージ機能で食事管理をすることができます。"  
   %br  
   %br  
-  = "食事管理機能について"
+  %span{style: "text-decoration: underline; color: blue; font-weight: bold;"} 
+    = "食事管理機能について"
   %br  
   &nbsp;
   = "1. ラインで食品名をひらがなで入力すると、その食品のカロリーと本日食べた食品の合計カロリ(kcal)が返信されます。"
@@ -39,7 +41,8 @@
   = "5. ラインには、他に以下のコマンドを入力することができます。"
   %br
   %br
-  コマンド一覧
+  %span{style: "text-decoration: underline; color: blue; font-weight: bold;"} 
+    コマンド一覧
   %table.table
     %thead
       %tr
@@ -60,15 +63,15 @@
         %td きのう
         %td 昨日食べたものを表示
       %tr
-        %th{:scope => "row"} 3
+        %th{:scope => "row"} 4
         %td こんしゅう
         %td 今週食べたものを表示
       %tr
-        %th{:scope => "row"} 3
+        %th{:scope => "row"} 5
         %td みす
         %td 入力した最新の食べ物を消去
       %tr
-        %th{:scope => "row"} 3
+        %th{:scope => "row"} 6
         %td へるぷ
         %td コマンド一覧を表示
 

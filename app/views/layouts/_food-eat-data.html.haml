@@ -1,0 +1,14 @@
+%ul.list-unstyled
+  - user_eat_data.each do |eat_data|
+    %li
+    = eat_data.created_at.month
+    月
+    = eat_data.created_at.day
+    日
+    = eat_data.created_at.hour
+    時
+    = eat_data.created_at.min
+    分：
+    = eat_data.food.name
+    = eat_data.food.calorie 
+    kcal
