@@ -66,12 +66,15 @@ class LineMessagesController < ApplicationController
           elsif (@user_message == "ほーむ")     
             response = "https://food-manage-appli.herokuapp.com/"
 
+          elsif (@user_message == "id")     
+            response = @user_id
+  
           else 
             response = "入力内容に誤りがあります。登録できる食べ物については、下記サイトの「カロリー早見表」に記載されている食べ物になります。\nhttps://food-manage-appli.herokuapp.com/"
-        end
   
         elsif (@user_message == "id")     
           response = @user_id
+          
         else
           response = "新規登録されていません。下記サイトに新規登録頂き、「使い方ページ」をご確認ください。\nhttps://food-manage-appli.herokuapp.com/"
       end
