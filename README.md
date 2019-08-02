@@ -28,6 +28,7 @@ Things you may want to cover:
 |------|----|-------|
 |email|string|unique: true|
 |password|string|null: false|
+|line_id|string|null: false|
 
 ### Association
 - has_one :user_statuses, dependent: :destroy
@@ -38,36 +39,36 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
-|age|string|
-|gender|string|
-|weight|string|
-|active|string|
-|est_energy_req|string|
-|line_id|string|
-|metabolism_id|string|add_foreign_key|
-|user_id|integer|add_foreign_key|
+|name|string|null: false|
+|age|integer|null: false|
+|gender|string|null: false|
+|weight|integer|
+|est_energy_req|integer|null: false|
+|metabolism_id|string|add_foreign_key|null: false|
+|user_id|integer|add_foreign_key|null: false|
 
 ### Association
+- has_many :metabolisms
 - belongs_to :user
 
 ## metabolisms table
 
 |Column|Type|Options|
 |------|----|-------|
-|age_base|integer|
-|gender|string|
-|base_weight|float|
-|base_metabolic_rate|float|
+|age_base|integer|null: false|
+|gender|string|null: false|
+|base_weight|float|null: false|
+|base_metabolic_rate|float|null: false|
 
 ### Association
 - belong_to :user
+- belong_to :user_status
 
 ## menus table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null: false|
 
 ### Association
 - has_many :foods
@@ -76,7 +77,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null: false|
 
 ### Association
 - has_many :foods
@@ -86,9 +87,10 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
-|calorie|integer|null: false, |hiragana_name|string| 
-|menu_id|integer|foreign_key: true|
-|menu_category_id|integer|foreign_key: true|
+|calorie|integer|null: false|
+|hiragana_name|string|null: false|
+|menu_id|integer|foreign_key: true|null: false|
+|menu_category_id|integer|foreign_key: true|null: false|
 
 
 ### Association
@@ -100,8 +102,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|food_id|integer|foreign_key: true|
-|user_id|integer|foreign_key: true|
+|food_id|integer|foreign_key: true|null: false|
+|user_id|integer|foreign_key: true|null: false|
 
 ### Association
 - belongs_to :food
