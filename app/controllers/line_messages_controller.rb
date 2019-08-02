@@ -28,7 +28,7 @@ class LineMessagesController < ApplicationController
           FoodEating.create(food_id: @reply_food_data.id, user_id: @current_user.id)
           calc_total_calorie()
 
-          response = @reply_food_data[:calorie] + "kcalです。" + "本日は#{@total_calorie}kcal摂取しています。"
+          response = "#{@reply_food_data.calorie}" + "kcalです。" + "本日は#{@total_calorie}kcal摂取しています。"
           elsif (@user_message == "みす")
             response = "最新の入力内容を削除しました。。" 
             message = FoodEating.where(user_id: @current_user.id).last().destroy
