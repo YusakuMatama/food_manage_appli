@@ -108,3 +108,6 @@ Things you may want to cover:
 ### Association
 - belongs_to :food
 - belongs_to :user
+
+![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line1-min.gif)
+![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line2-min.gif)
