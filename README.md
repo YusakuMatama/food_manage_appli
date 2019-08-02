@@ -141,8 +141,10 @@ Things you may want to cover:
 
 ## アプリのgif画像 その１
 友達追加したラインボットから、新規ユーザー登録するまでのgifです。
+
 ![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line1-min.gif)
 
 ## アプリのgif画像 その2
 新規ユーザー登録後、ラインで食事管理をしているgifです。
+
 ![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line2-min.gif)
