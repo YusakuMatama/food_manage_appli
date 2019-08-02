@@ -70,7 +70,6 @@ class UsersController < ApplicationController
       respond_to do |format|
         format.json
       end
-
       else
         respond_to do |format|
           format.html{redirect_to "/users/#{params[:id]}/edit"}
