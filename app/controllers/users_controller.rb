@@ -67,7 +67,15 @@ class UsersController < ApplicationController
   def update
     @user_status = UserStatus.find_by(user_id: current_user.id)
     if @user_status.update(user_status_params)
-      redirect_to "/"
+      respond_to do |format|
+        format.json
+      end
+
+      else
+        respond_to do |format|
+          format.html{redirect_to "/users/#{params[:id]}/edit"}
+          format.json
+        end
     end
   end
 
@@ -79,15 +87,22 @@ class UsersController < ApplicationController
     @user_status = UserStatus.new(user_status_params)
     
     if @user_status.save
-      redirect_to "/"
+      respond_to do |format|
+        format.json
+      end
+      else
+        respond_to do |format|
+          format.html{redirect_to "/users/new"}
+          format.json
+        end
     end
   end
 
   private
   def calc_est_energy_require
-    @age = params.require(:user_status).require(:age).to_i
-    @gender = params.require(:user_status).require(:gender)
-    @metabolism = Metabolism.where("age_base >= ?", @age).where(gender: @gender).first()
+    @age = params.require(:user_status).permit(:age)
+    @gender = params.require(:user_status).permit(:gender)
+    @metabolism = Metabolism.where("age_base >= ?", @age["age"].to_i).where(gender: @gender["gender"]).first()
     @est_energy_req = @metabolism.base_metabolic_rate * 1.75
   end
 

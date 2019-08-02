@@ -38,7 +38,15 @@ class FoodsController < ApplicationController
   def create
     @new_food = Food.new(food_params)
     if @new_food.save
-      redirect_to "/"
+      respond_to do |format|
+        format.json
+      end
+
+      else
+        respond_to do |format|
+          format.html{redirect_to "/foods/new"}
+          format.json
+        end
     end
   end
 
@@ -65,7 +73,7 @@ private
 
   def food_params
     search_menu_and_menu_category
-    params.require(:food).permit(:name, :hiragana_name, :calorie).merge(menu_id: @menu.id, menu_category_id: @menu_category.id)
+    params.require(:food).permit(:name, :hiragana_name, :calorie).merge(menu_id: @menu&.id, menu_category_id: @menu_category&.id)
   end
 
   def confirm_user_profile

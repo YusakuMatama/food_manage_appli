@@ -28,7 +28,6 @@ $(document).on('turbolinks:load', function(e){
   // もしユーザーが洋食を選んだら
     if (user_select_category == "洋食"){
       Detail_genre(gon.western);
-      console.log(gon.western)
     }
   // もしユーザーが中華を選んだら
     if (user_select_category == "中華"){

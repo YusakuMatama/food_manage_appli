@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_one :user_status, dependent: :destroy
   has_many :food_eatings,dependent: :destroy
   has_one :metabolism
+
+  validates :line_id, presence: { message: "でidを取得し、入力してください。" }
+
 end
