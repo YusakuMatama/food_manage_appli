@@ -42,7 +42,7 @@ class LineMessagesController < ApplicationController
             end
 
           elsif (@user_message == "きのう")
-            @user_eat_data_yesterday = FoodEating.where(user_id: @current_user.d).where(created_at: 1.day.ago.all_day)
+            @user_eat_data_yesterday = FoodEating.where(user_id: @current_user.id).where(created_at: 1.day.ago.all_day)
             if @user_eat_data_yesterday.present?
                 eat_date_data_yesterday()
                 response = @total_eat_data_yesterday
@@ -96,21 +96,21 @@ private
   def eat_date_data_today
     @user_eat_data_today.each do |eat_data|
       eat_time = eat_data.created_at.in_time_zone('Tokyo')
-      @total_eat_data_today += eat_data.food.name + "_" + eat_data.food.calorie + "kcal" + "::" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
+      @total_eat_data_today += eat_data.food.name + "_" + "#{eat_data.food.calorie}" + "kcal" + "::" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
     end
   end
 
   def eat_date_data_yesterday
     @user_eat_data_yesterday.each do |eat_data|
       eat_time = eat_data.created_at.in_time_zone('Tokyo')
-      @total_eat_data_yesterday += eat_data.food.name + "_" + eat_data.food.calorie + "kcal" + "::" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
+      @total_eat_data_yesterday += eat_data.food.name + "_" + "#{eat_data.food.calorie}" + "kcal" + "::" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
     end
   end
 
   def eat_date_data_this_week
     @user_eat_data_this_week.each do |eat_data|
       eat_time = eat_data.created_at.in_time_zone('Tokyo')
-      @total_eat_data_this_week += eat_data.food.name + "_" + eat_data.food.calorie + "kcal" + "::" + "#{eat_time.day}" + "日" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
+      @total_eat_data_this_week += eat_data.food.name + "_" + "#{eat_data.food.calorie}" + "kcal" + "::" + "#{eat_time.day}" + "日" + "#{eat_time.hour}" + "時" + "#{eat_time.min}" + "分" + "\n"
     end
   end
 
