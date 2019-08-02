@@ -3,7 +3,7 @@ class UserStatus < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true
-  validates :age, numericality: :only_integer 
+  validates :age, numericality: :true
   validates :gender, presence: true
   validates :est_energy_req, presence: true
 

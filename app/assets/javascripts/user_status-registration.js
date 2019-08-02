@@ -28,6 +28,7 @@ $(document).on('turbolinks:load', function(){
     })
 //validation
     .done(function(profile){
+      console.log(profile.age)
       $('#profile-edit-btn').prop('disabled', false);
       $("#profile_validation p").remove();
     
@@ -35,19 +36,19 @@ $(document).on('turbolinks:load', function(){
         $("#profile_validation").prepend(`<p>ユーザー名を入力してください。</p>`)
         $("#profile_validation p").css({"color" : "red"});
       }
-      if (profile.age.match(/^([1-9]\d*|0)$/) == null){
-        $("#profile_validation").prepend(`<p>年齢を数字（半角）で入力してください。</p>`)
+      if (profile.age == null){
+        $("#profile_validation").prepend(`<p>年齢を入力してください。</p>`)
         $("#profile_validation p").css({"color" : "red"});
       }
-      if (profile.age == ""){
-        $("#profile_validation").prepend(`<p>年齢を入力してください。</p>`)
+      if (profile.age <= 0){
+        $("#profile_validation").prepend(`<p>年齢を数字（半角）で入力してください。</p>`)
         $("#profile_validation p").css({"color" : "red"});
       }
       if (profile.gender == ""){
         $("#profile_validation").prepend(`<p>性別を入力してください。</p>`)
         $("#profile_validation p").css({"color" : "red"});
       }
-      if (profile.name != "" && profile.age.match(/^([1-9]\d*|0)$/) != null &&  profile.age != "" && profile.gender != ""){
+      if (profile.name != "" && profile.age > 0 &&  profile.age != null && profile.gender != ""){
         var top_page_url = window.location.protocol + '//' + window.location.host + '/';    
         window.location.href = top_page_url;
       }

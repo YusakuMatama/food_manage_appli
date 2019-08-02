@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190729110020) do
+ActiveRecord::Schema.define(version: 20190729105200) do
 
   create_table "food_eatings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "food_id"
-    t.integer  "user_id"
+    t.integer  "food_id",    null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_food_eatings_on_food_id", using: :btree
@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 20190729110020) do
   end
 
   create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "calorie"
-    t.string   "hiragana_name"
-    t.integer  "menu_id"
-    t.integer  "menu_category_id"
+    t.string   "name",             null: false
+    t.integer  "calorie",          null: false
+    t.string   "hiragana_name",    null: false
+    t.integer  "menu_id",          null: false
+    t.integer  "menu_category_id", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.index ["menu_category_id"], name: "index_foods_on_menu_category_id", using: :btree
@@ -34,33 +34,33 @@ ActiveRecord::Schema.define(version: 20190729110020) do
   end
 
   create_table "menu_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
+    t.string "name", null: false
   end
 
   create_table "menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "name"
+    t.string "name", null: false
   end
 
   create_table "metabolisms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "age_base"
-    t.string   "gender"
-    t.float    "base_metabolic_standard", limit: 24
-    t.float    "base_weight",             limit: 24
-    t.integer  "base_metabolic_rate"
+    t.integer  "age_base",                           null: false
+    t.string   "gender",                             null: false
+    t.float    "base_metabolic_standard", limit: 24, null: false
+    t.float    "base_weight",             limit: 24, null: false
+    t.integer  "base_metabolic_rate",                null: false
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
   create_table "user_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "age"
-    t.string   "weight"
-    t.integer  "est_energy_req"
-    t.integer  "metabolism_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "gender"
+    t.string   "name",           null: false
+    t.integer  "age",            null: false
+    t.string   "gender",         null: false
+    t.integer  "weight"
+    t.integer  "est_energy_req", null: false
+    t.integer  "metabolism_id",  null: false
+    t.integer  "user_id",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["metabolism_id"], name: "index_user_statuses_on_metabolism_id", using: :btree
     t.index ["user_id"], name: "index_user_statuses_on_user_id", using: :btree
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20190729110020) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "line_id"
+    t.string   "line_id",                             null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
