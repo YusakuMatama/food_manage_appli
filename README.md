@@ -148,3 +148,9 @@ Things you may want to cover:
 新規ユーザー登録後、ラインで食事管理をしているgifです。
 
 ![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line2-min.gif)
+
+## ラインのQRコード
+このラインボットのQRコードです。
+
+![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line-qr-code.png)
+
