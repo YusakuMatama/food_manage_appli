@@ -152,5 +152,4 @@ Things you may want to cover:
 ## ラインのQRコード
 このラインボットのQRコードです。
 
-![demo](https://raw.github.com/wiki/YusakuMatama/food_manage_appli/images/line-qr-code.png)
-
+<img width="973" alt="スクリーンショット 2019-07-31 16 56 23" src="https://user-images.githubusercontent.com/51021215/62447296-0818bc80-b7a0-11e9-8891-79f970d57d7d.png">
