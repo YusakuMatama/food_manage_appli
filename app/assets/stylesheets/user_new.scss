@@ -1,34 +1,24 @@
 .main_container_profile{
   min-height: 749px;
   background-color: #f8f9fa;
-}
-.main_container_login{
-  min-height: 749px;
-  background-color: #f8f9fa;
+  .profile_new{
+    padding-top: 50px;
+    margin-left: 100px;
+    box-sizing: border-box;
+    font-weight: bold;
+    color: black;
+  }  
+  .explain{
+    color: black;
+    font-weight: bold;
+  }  
 }
 .profile_text{
   color: black;
   font-weight: bold;
-}
-.explain{
-  color: black;
-  font-weight: bold;
-}
+}  
 
-.login_text{
-  color: black;
-  font-weight: bold;
-}
-.login_top{
-  padding-top: 50px;
-  margin-left: 100px;
-  box-sizing: border-box;
-  color: black;
-  font-weight: bold;
-}
 
-.col-sm-2{
-}
 .profile_top{
   padding-top: 50px;
   margin-left: 100px;
@@ -36,6 +26,7 @@
   font-weight: bold;
   color: black;
 }
+
 #form-margin{
   margin-top: 30px;
 

@@ -14,8 +14,11 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 @import "config/reset";
-@import "user_new";
 @import "config/general";
+@import "user_new";
+@import "user-edit";
+@import "user-login";
+
 
 
 
