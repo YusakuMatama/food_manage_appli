@@ -1,5 +1,5 @@
 .main_container_edit{
-  min-height: 749px;
+  height: 100vh;
   background-color: #f8f9fa;
 
   .profile_edit{
@@ -9,4 +9,8 @@
     font-weight: bold;
     color: black;
   }
+  .profile_text{
+    color: black;
+    font-weight: bold;
+  }    
 }

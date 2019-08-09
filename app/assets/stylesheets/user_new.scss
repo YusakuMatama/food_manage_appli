@@ -1,6 +1,7 @@
 .main_container_profile{
-  min-height: 749px;
+  height: 100vh;
   background-color: #f8f9fa;
+
   .profile_new{
     padding-top: 50px;
     margin-left: 100px;
@@ -12,58 +13,8 @@
     color: black;
     font-weight: bold;
   }  
-}
-.profile_text{
-  color: black;
-  font-weight: bold;
-}  
-
-
-.profile_top{
-  padding-top: 50px;
-  margin-left: 100px;
-  box-sizing: border-box;
-  font-weight: bold;
-  color: black;
-}
-
-#form-margin{
-  margin-top: 30px;
-
-}
-#user_status_gender{
-  width: 192px;
-  height: 38px;
-}
-
-#western_genre{
-  display: none;
-}
-#chinese_genre{
-  display: none;
-}
-#fast_genre{
-  display: none;
-}
-#drink_genre{
-  display: none;
-}
-#other_country_genre{
-  display: none;
-}
-#otumami_genre{
-  display: none;
-}
-#snacks_genre{
-  display: none;
-}
-#sweets_genre{
-  display: none;
-}
-#pans_genre{
-  display: none;
-}
-
-select{
-  background-color: #fff;
+  .profile_text{
+    color: black;
+    font-weight: bold;
+  }    
 }
