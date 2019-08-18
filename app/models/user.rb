@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_one :metabolism
 
   validates :line_id, presence: { message: "でidを取得し、入力してください。" }
+  validates :line_id, uniqueness: true
 
 end
