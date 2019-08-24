@@ -1,30 +1,23 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, except:[:index]
   before_action :confirm_user_profile, except: [:index, :new, :user_status]
+  include ApplicationHelper
 
   def index
   end
 
   def show
-    @user = UserStatus.find_by(user_id: current_user.id)
-    @metabolism_under = Metabolism.find_by(id: @user&.metabolism_id - 1)
-    @metabolism_top = Metabolism.find_by(id: @user&.metabolism_id)
-
-    @user_eat_data_today = FoodEating.where(user_id: current_user.id).where(created_at: Time.zone.now.all_day)
+    user_eat_food_data
     @total_calorie = 0
     calc_total_calorie()
-
-    @user_eat_data = FoodEating.where(user_id: current_user.id)
-    @user_eat_data_yesterday = FoodEating.where(user_id: current_user.id).where(created_at: 1.day.ago.all_day)
-    @user_eat_data_this_month = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.all_month)
-    @user_eat_data_this_week = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
   end
   
   def graff
     gon.data_calorie = []
     gon.data_date = [*(Date.today.beginning_of_week..Date.today.end_of_week)]
     @user_eat_data_this_week = FoodEating.where(user_id: current_user.id).where(created_at: Date.today.beginning_of_week.beginning_of_day..Date.today.end_of_week.end_of_day)
-    @this_week = Date.today.all_week
+    @this_week = [*(Date.today.beginning_of_week..Date.today.end_of_week)]
+    @user = UserStatus.find_by(user_id: current_user.id)
     total_calorie_1 = 0
     total_calorie_2 = 0
     total_calorie_3 = 0

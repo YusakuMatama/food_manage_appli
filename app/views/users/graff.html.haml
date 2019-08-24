@@ -1,6 +1,37 @@
 = render "layouts/header"
 %h1
-  今週の合計カロリー(#{@this_week})
+  今週の合計カロリー(#{Date.today.all_week})
 %canvas#myChart{:height => "10", :width => "25"}
 :javascript
   draw_graph();
+
+%br
+%br
+1日の推定消費カロリー   : 
+%span{style: "text-decoration: underline;"} 
+  = @user.est_energy_req
+  kcal
+%br
+- total_calorie = 0
+- week_total_calorie = 0
+- for i in 0..6 do
+  = @this_week[i].month
+  月
+  = @this_week[i].day
+  日
+  %br
+  摂取カロリー : 
+  %span{style: "text-decoration: underline;"} 
+  - @user_eat_data_this_week.each do |eat_data|
+    - if eat_data.created_at.day == @this_week[i].day
+      - total_calorie = total_calorie + eat_data.food.calorie 
+      - week_total_calorie += total_calorie
+  = total_calorie
+  kcal
+  %br
+  消費カロリーに対する摂取カロリー :
+  %span{style: "text-decoration: underline;"} 
+  = total_calorie - @user.est_energy_req
+  kcal
+  %br
+  %br

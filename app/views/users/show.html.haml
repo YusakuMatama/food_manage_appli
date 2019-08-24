@@ -5,8 +5,7 @@
   .d-flex.flex-column.bd-highlight.mb-3
     .p-2.bd-highlight.alert.alert-primary
       %h4
-        =@user.name
-        さんのデータ
+        = user_name
       %ul.list-unstyled
         %li<>
         本日の摂取カロリー : 
@@ -16,8 +15,7 @@
         %li<> 
         1日の推定消費カロリー   : 
         %span{style: "text-decoration: underline;"} 
-          = @user.est_energy_req
-          kcal
+          = user_estimate_calorie_require
         %br
         - if (@user.est_energy_req - @total_calorie >= 0)
           %li<>
@@ -32,29 +30,18 @@
           %span{style: "font-weight: bold;"}
             kcal超過しています。本日はもう食べないほうがいいです。
     .p-2.bd-highlight.alert.alert-info
-      - unless @user.metabolism_id == 1
-        %h4.card-title 
-          = @metabolism_under.age_base
-          から 
-          = @metabolism_top.age_base
-          才までの平均データ
-      - else
-        %h4.card-title 
-          = @metabolism_top.age_base
-          才以下の平均データ
+      %h4.card-title 
+        = metabolism
       %ul.list-unstyled
         %li 
           平均体重          : 
-          = @metabolism_top.base_weight
-          kg
+          = base_weight
         %li 
           推定消費カロリー    : 
-          = @user.est_energy_req
-          kcal
+          = user_estimate_calorie_require
         %li
           基礎代謝          : 
-          = @metabolism_top.base_metabolic_rate
-          kcal
+          = base_metabolism
         %br
         %li 推定消費カロリーは基礎代謝×1.75(一般的な活動レベルの指標)で計算しています。
   %h1.text-center.p-3.mb-2.bg-primary.text-white
@@ -93,15 +80,5 @@
       .border.p-3.p-2.bd-highlight.mb-2
         %h4 
           過去データ
-          -unless @user_eat_data.blank?
-            = @user_eat_data[0].created_at.year
-            年
-            = @user_eat_data[0].created_at.month
-            月
-            から
-            = @user_eat_data.last().created_at.year
-            年
-            = @user_eat_data.last().created_at.month
-            月
-            まで
+          = user_eat_data
           = render partial: 'layouts/food-eat-data', locals: { user_eat_data: @user_eat_data }          
