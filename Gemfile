@@ -60,7 +60,7 @@ gem 'dotenv-rails'
 gem 'whenever', require: false
 gem 'tod'
 gem 'chart-js-rails', '~> 0.1.4'
-gem 'gon', '~> 6.2.0'
+gem 'gon', '~> 6.4.0'
 gem 'devise'
 gem 'ruby-debug-ide'
 gem 'debase'
